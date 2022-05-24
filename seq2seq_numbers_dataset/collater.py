@@ -23,7 +23,7 @@ class Seq2SeqNumbersCollater:
             padding_value=self.src_dict.pad_idx()
         )
         src_lengths = torch.LongTensor([s['src_length'] for s in batch])
-        src_padding_mask = self.lengths_to_padding_mask(src_lengths).T
+        src_padding_mask = self.lengths_to_padding_mask(src_lengths)
         src = {
             "ids": src_ids,
             "padding_mask": src_padding_mask,
@@ -34,7 +34,7 @@ class Seq2SeqNumbersCollater:
             padding_value=self.tgt_dict.pad_idx()
         )
         tgt_lengths = torch.LongTensor([s['tgt_length'] for s in batch])
-        tgt_padding_mask = self.lengths_to_padding_mask(tgt_lengths).T
+        tgt_padding_mask = self.lengths_to_padding_mask(tgt_lengths)
         tgt = {
             "ids": tgt_ids,
             "padding_mask": tgt_padding_mask,
